@@ -59,5 +59,95 @@ String getInfo = BoxArea.getText();
 
 ## 줄바꿈에 따라 구분된 입력 문자열을 띄어쓰기 단위에 따른 구분 및 JSON구조화
 ```
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
+class Listener2 implements ActionListener{
+		JFrame frame;
+		public Listener2(JFrame f){
+			frame = f;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+			String getInfo = BoxArea.getText();
+			// 엔터(\n) 자르기
+			String splitedInfo[] = getInfo.split("\n");
+			int IndexOfSplitedInfo = splitedInfo.length;
+			for(int i =0; i< IndexOfSplitedInfo; i++){
+				System.out.println("splitedInfo["+i+"] : "+splitedInfo[i]);
+				
+			}
+			
+		
+			
+			JSONObject jsonObject = new JSONObject();
+			
+			String oneSpacedString = "";
+			int j = 0;
+			for(int i = 0 ; i< IndexOfSplitedInfo;i++ ){
+				String	TemporarySplitedInfo = splitedInfo[i];
+				
+				if(TemporarySplitedInfo.charAt(0) == ' '){
+					//띄어쓰기 하나 판별
+					
+					if(TemporarySplitedInfo.charAt(1)==' '){
+						
+						//띄어쓰기 두개 판별 
+						System.out.println("띄어쓰기 두개가 감지됨");
+						jsonObject.put(oneSpacedString + " "+ j, TemporarySplitedInfo);
+
+						
+						j++;
+				
+					}else{
+						//띄어쓰기 하나만 했을 경우의 잘린 문자를 저장한다. 그리고 여기에다 노드를 붙여주면 된다.
+
+						oneSpacedString = splitedInfo[i];
+						System.out.println("띄어쓰기 하나가 감지됨");
+
+						j=0;
+					}
+					
+				}
+			}
+			JSONObject finalJsonObject = new JSONObject();
+			finalJsonObject.put(splitedInfo[0], jsonObject);
+			
+			System.out.println(finalJsonObject);
+			
+			//파일 만들기 
+			//파일 이름
+			String fileName = splitedInfo[0]+".json";
+			
+			try{
+				File file = new File(fileName);
+				FileWriter fw = new FileWriter(file, true);
+				
+				fw.write(finalJsonObject.toString());
+				fw.flush();
+				
+				fw.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+```
+</br>
+
+## JSON파일 생성
+```
+String fileName = splitedInfo[0]+".json";
+			
+	try{
+		File file = new File(fileName);
+		FileWriter fw = new FileWriter(file, true);
+				
+		fw.write(finalJsonObject.toString());
+		fw.flush();
+				
+		fw.close();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
 ```
