@@ -43,3 +43,21 @@ class Listener1 implements ActionListener{
 }
 
 ```
+</br>
+
+## JTextArea를 통해 입력받은 값을 줄바꿈(\n)에 따라 구분하기
+```
+String getInfo = BoxArea.getText();
+	// 엔터(\n) 자르기
+	String splitedInfo[] = getInfo.split("\n");
+	int IndexOfSplitedInfo = splitedInfo.length;
+	for(int i =0; i< IndexOfSplitedInfo; i++){
+		System.out.println("splitedInfo["+i+"] : "+splitedInfo[i]);				
+	}
+```
+</br>
+
+## 줄바꿈에 따라 구분된 입력 문자열을 띄어쓰기 단위에 따른 구분 및 JSON구조화
+```
+
+```
