@@ -17,5 +17,29 @@ https://stackoverflow.com/questions/17651395/convert-jsonobject-to-string?utm_me
 
 ## JTextArea를 통해 사용자 입력값 받아오기
 ```
-<br/><br/>
+JTextArea BoxArea;
+public TestUI(){
+
+  BoxArea = new JTextArea(50,50);
+  
+  // JTextArea에 입력된 값을 콘솔로 전송하는 버튼
+  JButton button = new JButton("전송");
+  add(button);
+  this.setVisible(true);
+	button.addActionListener(new Listener1(this));
+}
+class Listener1 implements ActionListener{
+		JFrame frame;
+		public Listener1(JFrame f){
+			frame = f;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+			String  getInfo = BoxArea.getText();
+			System.out.println(getInfo); //콘솔에 입력된 값이 출력됨
+			
+			JOptionPane.showMessageDialog(frame, getInfo); //신경안써도 되는 코드.
+		}
+	}
+
 ```
