@@ -151,3 +151,20 @@ String fileName = splitedInfo[0]+".json";
 		e.printStackTrace();
 	}
 ```
+</br>
+
+### JSON 생성 전 주의사항
+>사용하고자 하는 프로젝트 파일에 json-simple-1.1.1.jar 라이브러리를 추가해야한다.</br>
+>다운링크 https://code.google.com/archive/p/json-simple/downloads </br>
+>라이브러리 적용방법 http://mainia.tistory.com/2273 </br>
+
+### JTextArea 입력에 따른 생성되는 JSON 파일의 내용 예시
+##### 입력 
+상준아밥먹었니</br>
+  아침밥먹었니</br>
+    고등어조림</br>
+    갈치조림</br>
+  점심밥먹었니</br>
+    안먹었어요</br>
+ ##### JSON 파일 결과
+    
