@@ -29,17 +29,17 @@ public TestUI(){
 	button.addActionListener(new Listener1(this));
 }
 class Listener1 implements ActionListener{
-		JFrame frame;
-		public Listener1(JFrame f){
-			frame = f;
-		}
-		@Override
-		public void actionPerformed(ActionEvent arg0){
-			String  getInfo = BoxArea.getText();
-			System.out.println(getInfo); //콘솔에 입력된 값이 출력됨
-			
-			JOptionPane.showMessageDialog(frame, getInfo); //신경안써도 되는 코드.
-		}
+	JFrame frame;
+	public Listener1(JFrame f){
+		frame = f;
 	}
+	@Override
+	public void actionPerformed(ActionEvent arg0){
+		String  getInfo = BoxArea.getText();
+		System.out.println(getInfo); //콘솔에 입력된 값이 출력됨
+		
+		JOptionPane.showMessageDialog(frame, getInfo); //신경안써도 되는 코드.
+	}
+}
 
 ```
