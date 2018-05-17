@@ -13,6 +13,7 @@ http://fruitdev.tistory.com/54 <br/>
 http://shstarkr.tistory.com/185 <br/>
 http://mkil.tistory.com/323 <br/>
 https://stackoverflow.com/questions/17651395/convert-jsonobject-to-string?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa <br/>
+https://blog.naver.com/battledocho/220035925900</br>
 <br/><br/>
 
 ## JTextArea를 통해 사용자 입력값 받아오기
