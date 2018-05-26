@@ -24,6 +24,8 @@ import org.json.simple.JSONObject;
 public class TestUI extends JFrame {
 //	JTextField BoxInfo;
 	JTextArea BoxArea;
+	JTextField X_Field, Y_Field, W_Field, H_Field, ColorField;
+	
 	public TestUI(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//프레임 완전하게 끄기
 		this.setSize(1000,1000);
@@ -35,21 +37,31 @@ public class TestUI extends JFrame {
 		JPanel panel2 = new JPanel();
 		panel1.add(new JLabel(" 상자1:"));
 //		BoxInfo = new JTextField(100);
-		BoxArea = new JTextArea(50,50);
 		
+		BoxArea = new JTextArea(50,50);
+		X_Field = new JTextField();
+		Y_Field = new JTextField();
+		W_Field = new JTextField();
+		H_Field = new JTextField();
+		ColorField = new JTextField();
 		panel1.add(BoxArea);
-
+		
 		this.add(panel1);
 		JButton button = new JButton("전송");
-		JButton button2 = new JButton("파일저장");
+		JButton button2 = new JButton("Json파일저장");
+		JButton button3 = new JButton("txt파일저장");
+		add(X_Field);
+		add(Y_Field);
+		add(W_Field);
+		add(H_Field);
+		add(ColorField);
 		add(button);
 		add(button2);
+		add(button3);
 		this.setVisible(true);
 		button.addActionListener(new Listener1(this));
-	
-		
-		
 		button2.addActionListener(new Listener2(this));
+		button3.addActionListener(new Listener3(this));
 	}
 	
 	class Listener1 implements ActionListener{
@@ -149,11 +161,58 @@ public class TestUI extends JFrame {
 		}
 	}
 	
+	class Listener3 implements ActionListener{
+		JFrame frame;
+		public Listener3(JFrame f){
+			frame = f;
+		}
+		@Override
+		public void actionPerformed(ActionEvent arg0){
+			
+			String xPosition = X_Field.getText();
+			String yPosition = Y_Field.getText();
+			String wPosition = W_Field.getText();
+			String hPosition = H_Field.getText();
+			String colorField = ColorField.getText();
+			
+			String getInfo2 = BoxArea.getText();
+			// 엔터(\n) 자르기
+			String splitedInfo[] = getInfo2.split("\n");
+			int IndexOfSplitedInfo = splitedInfo.length;
+			for(int i =0; i< IndexOfSplitedInfo; i++){
+				System.out.println("splitedInfo["+i+"] : "+splitedInfo[i]);
+				
+			}
+			for(int i = 0 ; i< IndexOfSplitedInfo;i++ ){
+				String	TemporarySplitedInfo = splitedInfo[i];
+				
+				if(TemporarySplitedInfo.charAt(0) == ' '){
+					//띄어쓰기 하나 판별
+					
+					if(TemporarySplitedInfo.charAt(1)==' '){
+						
+						//띄어쓰기 두개 판별 
+						System.out.println("띄어쓰기 두개가 감지됨");
+
+				
+					}else{
+						
+						System.out.println("띄어쓰기 하나가 감지됨");
+						
+					}
+					
+				}else{
+					
+					
+					splitedInfo[i] = splitedInfo[i]+"(" + xPosition + ","+wPosition+","+hPosition+","+colorField+")";
+					System.out.println("첫째 노드");
+					System.out.println(splitedInfo[i]);
+				}
+			}
+		}
+	}
 	public static void main(String[] args){
 		new TestUI();
 	}
 	 
 }
-
-
-	
